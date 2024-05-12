@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книги</title>
+    <style>
+    body {
+        margin: 0px 0px 0px 10%;
+        background: url("https://img.freepik.com/free-photo/library-with-round-window-bookcase-with-bookcase-left_188544-9023.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        color: #333;
+        font-size: 24px;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 10px;
+    }
+    a {
+        text-decoration: none;
+        color: #007bff;
+        font-size: 18px;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Список книг</h2>
+    <ul>
+        {% for book in books %}
+        <li>
+            <a href="{{ url_for('book', book_id=book.id) }}">{{ book.title }}</a> -
+            <a href="{{ url_for('author', author_id=book.author.id) }}">{{ book.author.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
